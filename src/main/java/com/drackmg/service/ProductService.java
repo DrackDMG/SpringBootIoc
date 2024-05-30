@@ -14,10 +14,8 @@ public class ProductService
     //@Qualifier("productRepoA")
     private ProductRepo productRepo;
 
-    @Autowired
-    public ProductService( @Qualifier("productRepoB") ProductRepo productRepo) {
+    public ProductService() {
         System.out.println("ProductService created!");
-        this.productRepo = productRepo;
     }
 
     public void save(String name){
@@ -26,5 +24,11 @@ public class ProductService
 
     public  void delete(String name){
            productRepo.delete(name);
+    }
+
+    //@Qualifier("productRepoB")
+    @Autowired
+    public void setProductRepo(@Qualifier("productRepoB")ProductRepo productRepo) {
+        this.productRepo = productRepo;
     }
 }
