@@ -1,22 +1,24 @@
 package com.drackmg.service;
 
-import com.drackmg.repository.ProductRepoA;
+import com.drackmg.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ProductService
 {
     @Autowired
-    private ProductRepoA productRepoA;
+    @Qualifier("productRepoB")
+    private ProductRepo productRepo;
 
     public ProductService() {
         System.out.println("ProductService created!");
     }
 
     public void save(String name){
-        productRepoA.save(name);
+        productRepo.save(name);
     }
 
     public  void delete(String name){
-           productRepoA.delete(name);
+           productRepo.delete(name);
     }
 }

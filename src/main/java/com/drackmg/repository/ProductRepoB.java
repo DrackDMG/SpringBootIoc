@@ -1,6 +1,6 @@
 package com.drackmg.repository;
 
-public class ProductRepoB {
+public class ProductRepoB implements ProductRepo {
 
     public ProductRepoB() {
         System.out.println("ProductRepoB created!");
