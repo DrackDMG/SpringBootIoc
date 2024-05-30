@@ -1,5 +1,7 @@
 package com.drackmg.repository;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -7,8 +9,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductRepoB implements ProductRepo {
 
-    public ProductRepoB() {
-        System.out.println("ProductRepoB created!");
+    @PostConstruct
+    public void init(){
+        System.out.println("===>ProductRepoB init!");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("===>ProductRepoB destroy!");
     }
 
     public void save(String name){

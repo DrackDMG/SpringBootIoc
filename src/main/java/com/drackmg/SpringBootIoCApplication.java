@@ -8,29 +8,25 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@RestController
 public class SpringBootIoCApplication{
 
-
+	@Autowired
 	private ProductService productService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootIoCApplication.class, args);
 	}
 
-
-	@Bean
-	public CommandLineRunner commandWithAutowired() {
-		return args -> {
-			productService.save("Product 1");
-			productService.delete("Product 1");
-		};
+	@RequestMapping("/save")
+	public String save(){
+		productService.save("Product 1");
+		return "Product saved!";
 	}
 
-	@Autowired
-	public void setProductService(ProductService productService) {
-		this.productService = productService;
-	}
 }
 
