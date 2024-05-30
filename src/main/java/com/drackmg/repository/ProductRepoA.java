@@ -1,5 +1,12 @@
 package com.drackmg.repository;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+//@Component
+@Repository
+@Primary
 public class ProductRepoA implements ProductRepo {
 
     public ProductRepoA() {

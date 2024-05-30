@@ -1,5 +1,10 @@
 package com.drackmg.repository;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+//@Component
+@Repository
 public class ProductRepoB implements ProductRepo {
 
     public ProductRepoB() {
