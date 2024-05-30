@@ -5,6 +5,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -30,12 +31,15 @@ y se puede cambiar a prototype
  */
 public class ProductService
 {
+    @Value("${messages.success}")
+    private String message;
 
     //@Qualifier("productRepoA")
     private ProductRepo productRepo;
 
     @PostConstruct
     public void init(){
+        System.out.println("===>Message aplication.propertis" + message);
         System.out.println("===>ProductService init!");
     }
     @PreDestroy

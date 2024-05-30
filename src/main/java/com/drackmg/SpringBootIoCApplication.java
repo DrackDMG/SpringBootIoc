@@ -5,6 +5,7 @@ import com.drackmg.repository.ProductRepoB;
 import com.drackmg.service.ProductService;
 import com.drackmg.service.ShopingCardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,9 @@ import java.util.List;
 @SpringBootApplication
 @RestController
 public class SpringBootIoCApplication{
+
+	@Value("${messages.success} y 1 +1  es igual a #{1+1} -> #{@componentA.getClassName('Macarrones')}")
+	private String message;
 
 	@Autowired
 	private ProductService productService;
@@ -32,6 +36,10 @@ public class SpringBootIoCApplication{
 	public String save(){
 		productService.save("Product 1");
 		return "Product saved!";
+	}
+	@RequestMapping("/message")
+	public String message(){
+		return message;
 	}
 
 	@RequestMapping("/add-product")

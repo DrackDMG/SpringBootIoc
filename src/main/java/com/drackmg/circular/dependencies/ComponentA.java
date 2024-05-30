@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ComponetA {
+public class ComponentA {
     @Autowired
-    private ComponetB componetB;
+    private ComponentB componetB;
+
+    public  String getClassName( String name){
+        return "El nombre del producto es: " + name;
+    }
 }
