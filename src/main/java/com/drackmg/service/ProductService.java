@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService
 {
-    @Autowired
+
     //@Qualifier("productRepoA")
     private ProductRepo productRepo;
 
-    public ProductService() {
+    @Autowired
+    public ProductService( @Qualifier("productRepoB") ProductRepo productRepo) {
         System.out.println("ProductService created!");
+        this.productRepo = productRepo;
     }
 
     public void save(String name){
